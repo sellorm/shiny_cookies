@@ -6,8 +6,10 @@ ui <- fluidPage(
   fluidRow(
     box(
       title = "Current cookies in your browser for this site:",
-      p(paste("This is a complete list of all cookies set in your browser",
-              "for the current site (probably http://localhost).")),
+      p(paste(
+        "This is a complete list of all cookies set in your browser",
+        "for the current site (probably http://localhost)."
+      )),
       verbatimTextOutput("full_cookie_list"),
       actionButton("refresh", "Refresh")
     ),
@@ -17,7 +19,7 @@ ui <- fluidPage(
         document.getElementById("refresh").onclick = function() {
           // get all the cookies
           var my_cookies = document.cookie;
-          // pass back to Shiny
+          // pass back to shiny
           Shiny.onInputChange("all_cookies", my_cookies);
         };
         ')
@@ -25,8 +27,10 @@ ui <- fluidPage(
   fluidRow(
     box(
       title = "set a custom cookie called 'my_cookie'",
-      p(paste("Here we set the value for a  custom cookie called 'my_cookie',",
-              "Setting it more than once will update the value of the cookie.")),
+      p(paste(
+        "Here we set the value for a  custom cookie called 'my_cookie',",
+        "Setting it more than once will update the value of the cookie."
+      )),
       verbatimTextOutput(outputId = "custom_cookie"),
       textInput("my_cookie_value", "Cookie contents:"),
       actionButton("set_cookie", "Set cookie", style = "simple", size = "sm", color = "warning"),
@@ -69,9 +73,11 @@ ui <- fluidPage(
   fluidRow(
     box(
       title = "Set arbitrary cookies",
-      p(paste("This allows us to set arbitrary cookies.",
-              "Set your own cookie name and value",
-              "You should see your new cookie appear in the list at the top.")),
+      p(paste(
+        "This allows us to set arbitrary cookies.",
+        "Set your own cookie name and value",
+        "You should see your new cookie appear in the list at the top."
+      )),
       textInput("arb_cookie_name", "Name"),
       textInput("arb_cookie_value", "Value"),
       actionButton("arb_cookie_set", "Set cookie", style = "simple", size = "sm", color = "warning"),
@@ -100,10 +106,12 @@ ui <- fluidPage(
   fluidRow(
     box(
       title = "Delete cookies",
-      p(paste("Use this control to delete a cookie.",
-              "Enter the cookie name you'd like to delete and check that it's",
-              "gone from the list at the top.",
-              "Remember that cookie names are case sensitive.")),
+      p(paste(
+        "Use this control to delete a cookie.",
+        "Enter the cookie name you'd like to delete and check that it's",
+        "gone from the list at the top.",
+        "Remember that cookie names are case sensitive."
+      )),
       textInput("cookie_to_delete", "Name of cookie to delete:"),
       actionButton("delete_cookie", "Delete cookie", style = "simple", size = "sm", color = "warning"),
     ),
@@ -126,10 +134,10 @@ ui <- fluidPage(
         function freshCookies(){
           // Read in al the cookies
           var my_cookies = document.cookie;
-          // pass back to 
+          // pass back to shiny
           Shiny.onInputChange("all_cookies", my_cookies);
         };
-        
+
         // waiting for 1 second allows the Shiny js library to load before
         // running the cookie refresh function
         setTimeout(freshCookies, 1000)
