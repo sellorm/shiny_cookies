@@ -1,7 +1,7 @@
 # Handling cookies in Shiny apps
 
 This repo contains a small demo app that illustrates one way to work with
-cookies withing a Shiny app.
+cookies within a Shiny app.
 
 All the real work is offloaded to javascript with information being passed
 back into the app through Shiny's javascript interface, specifically,
